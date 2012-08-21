@@ -1,0 +1,16 @@
+!!! 5
+%html
+  %head
+    %title The Daily Proogle
+    %meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
+  %body
+    %form(method='post' action='/curate')
+      %input(type='hidden' name='i' value='#{params[:i]}')
+      %input(type='hidden' id='op' name='op')
+      %br
+      %div(style='float: left;')
+        - %w[lang author length id level  ref].each do |i|
+          %input(type='text' id='#{i}' name='#{i}' value='#{instance_variable_get '@' + i}')
+          %br
+      %textarea(name='code' style='float: left; width: 100%;' rows='20') #{@code}
+  %script(src='js/nav.js')
